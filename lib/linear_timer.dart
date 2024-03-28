@@ -28,6 +28,14 @@ class LinearTimerController {
 
   // This is the value for the animation (between 0 and 1)
   double get value => _controller.value;
+  set value(double v) {
+    if (v >= 1)
+      _controller.value = 1;
+    else if (v <= 0)
+      _controller.value = 0;
+    else
+      _controller.value = v;
+  }
 
   /// We'll create an animation controller for this object, and we need a [tickerProvider] with implements the TickerProvider
   ///   The [tickerProvider] will usually be a StatefulWidget that implements the _TickerProviderStateMixin_. If only using
